@@ -1,8 +1,12 @@
+import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from pandas import json_normalize
 from math import sin, cos, sqrt, atan2, radians
+
+# Universal file saving path
+cwd = os.getcwd()
 
 # SINGLE GRAPH
 def singleGraph(csv, x_col, y_col, width, height, x_max, y_max, x_label, y_label, graph_title):
@@ -34,8 +38,10 @@ def singleGraph(csv, x_col, y_col, width, height, x_max, y_max, x_label, y_label
     plt.ylim(0,int(y_max))
   else:
     pass
- 
+
   plt.plot(x,y)
+
+  plt.savefig('/content/single-graph.svg', format="svg")
 
 # MULTI GRAPH
 def multiGraph(csv, x_col, y_col_1, y_col_2, width, height, x_label, y_label_1, y_label_2, graph_title):
@@ -63,3 +69,4 @@ def multiGraph(csv, x_col, y_col_1, y_col_2, width, height, x_label, y_label_1, 
   ax2.plot(x, y2, color=line_2, linewidth=2)
   ax2.set_ylabel(y_label_2, color=line_2, fontsize=16)
 
+  plt.savefig('/content/multi-graph.svg', format="svg")
